@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home"
+            android:title="Home">
+        </item>
+    </group>
+    <group
+        android:id="@+id/group2">
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/profile"
+            android:title="My Profile">
+        </item>
+    </group>
+    <group
+        android:id="@+id/group3">
+        <item
+            android:id="@+id/society"
+            android:icon="@drawable/society"
+            android:title="My Society">
+        </item>
+    </group>
+    <group
+        android:id="@+id/group4">
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/aboutus"
+            android:title="About Us">
+        </item>
+    </group>
+    <group
+        android:id="@+id/group5">
+        <item
+            android:id="@+id/funds"
+            android:icon="@drawable/grow"
+            android:title="Society Funds">
+        </item>
+    </group>
+    <group
+        android:id="@+id/group6">
+        <item
+            android:id="@+id/exit"
+            android:icon="@drawable/exit"
+            android:title="Logout">
+        </item>
+    </group>
+
+</menu>
