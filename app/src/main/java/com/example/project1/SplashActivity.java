@@ -14,9 +14,9 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
 
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish(); // Finish splash so user can't go back to it
-        }, 1500);
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
+        }, 2000);
+
     }
 }

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Specification">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Specification"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#2D4464"
+        android:paddingStart="10dp"
+        android:background="#DAEDFF"
+        android:textStyle="bold">
+
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingStart="15dp"
+                android:src="@drawable/profile">
+
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/white"
+                android:hint="ozone locks"
+                android:layout_marginLeft="10dp"
+                android:textColor="#04042F"
+                android:textSize="18dp">
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingStart="15dp"
+                android:src="@drawable/profile">
+
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/white"
+                android:hint="teflon
+pipes"
+                android:layout_marginLeft="10dp"
+                android:textColor="#04042F"
+                android:textSize="18dp">
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingStart="15dp"
+                android:src="@drawable/profile">
+
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/white"
+                android:hint="polycab
+wires"
+                android:layout_marginLeft="10dp"
+                android:textColor="#04042F"
+                android:textSize="18dp">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingStart="15dp"
+                android:src="@drawable/profile">
+
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/white"
+                android:hint="silicon
+taps"
+                android:layout_marginLeft="10dp"
+                android:textColor="#04042F"
+                android:textSize="18dp">
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingStart="15dp"
+                android:src="@drawable/profile">
+
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/white"
+                android:hint="century
+plywood"
+                android:layout_marginLeft="10dp"
+                android:textColor="#04042F"
+                android:textSize="18dp">
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingStart="15dp"
+                android:src="@drawable/profile">
+
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/white"
+                android:hint="jaguar
+sanitary"
+                android:layout_marginLeft="10dp"
+                android:textColor="#04042F"
+                android:textSize="18dp">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Enquriy"
+        android:layout_width="161dp"
+        android:layout_height="31dp"
+        android:background="@drawable/registerbg"
+        android:text="Enquiry"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="70dp"
+        android:textStyle="bold"
+        >
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+</LinearLayout>

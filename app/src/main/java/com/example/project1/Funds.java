@@ -1,64 +1,138 @@
 package com.example.project1;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Funds#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.fragment.app.Fragment;
+
+import java.util.Calendar;
+
 public class Funds extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private TextView totalFundTextView;
+    private EditText addFundEditText;
+    private Button addFundButton;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    // Expense-related views
+    private EditText fundUserEditText, costFundEditText, dateEditText;
+    private Button fundExpenseButton;
+
+    private int totalFund = 24000;
 
     public Funds() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Funds.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Funds newInstance(String param1, String param2) {
-        Funds fragment = new Funds();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_funds, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Initialize views
+        totalFundTextView = view.findViewById(R.id.balance);
+        addFundEditText = view.findViewById(R.id.add_fund);
+        addFundButton = view.findViewById(R.id.fundadded);
+
+        // Initialize expense fields
+        fundUserEditText = view.findViewById(R.id.funduser);
+        costFundEditText = view.findViewById(R.id.costfund);
+        dateEditText = view.findViewById(R.id.user);
+        fundExpenseButton = view.findViewById(R.id.fundadded_exp);
+
+        updateTotalFundText();
+
+        // 🔹 Date picker for the Date EditText
+        dateEditText.setFocusable(false); // Prevent keyboard from showing up
+        dateEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+
+        // ➕ Add Funds button logic
+        addFundButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String input = addFundEditText.getText().toString().trim();
+
+                if (TextUtils.isEmpty(input)) {
+                    Toast.makeText(getActivity(), "Field cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                try {
+                    int addedAmount = Integer.parseInt(input);
+                    totalFund += addedAmount;
+                    updateTotalFundText();
+                    addFundEditText.setText("");
+                    Toast.makeText(getActivity(), "Funds added successfully!", Toast.LENGTH_SHORT).show();
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getActivity(), "Please enter a valid number", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // ➖ Expense button logic
+        fundExpenseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String fundUsedFor = fundUserEditText.getText().toString().trim();
+                String cost = costFundEditText.getText().toString().trim();
+                String date = dateEditText.getText().toString().trim();
+
+                if (TextUtils.isEmpty(fundUsedFor) || TextUtils.isEmpty(cost) || TextUtils.isEmpty(date)) {
+                    Toast.makeText(getActivity(), "Please fill all expense fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Navigate to AfterFund Activity
+                Intent intent = new Intent(getActivity(), AfterFund.class);
+                intent.putExtra("fundUsedFor", fundUsedFor);
+                intent.putExtra("cost", cost);
+                intent.putExtra("date", date);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void showDatePickerDialog() {
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                getActivity(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
+                        // Note: Month is 0-based, so add 1
+                        String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                        dateEditText.setText(selectedDate);
+                    }
+                },
+                year, month, day
+        );
+
+        datePickerDialog.show();
+    }
+
+    private void updateTotalFundText() {
+        totalFundTextView.setText(totalFund + "/-");
     }
 }

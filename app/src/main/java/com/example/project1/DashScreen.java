@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -22,9 +21,9 @@ import com.google.android.material.navigation.NavigationView;
 
 public class DashScreen extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
-    ImageButton imageButton;
-    NavigationView navigationView;
+    private DrawerLayout drawerLayout;
+    private ImageButton imageButton;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,48 +32,50 @@ public class DashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_dash_screen);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        imageButton = findViewById(R.id.buttonexit); // Main layout button to open drawer
+        imageButton = findViewById(R.id.buttonexit);
         navigationView = findViewById(R.id.navigation);
 
         Toolbar toolbar = findViewById(R.id.toolbarnoty);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {   // it is to invisible the project name
+
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        loadFragment(new Home(), 0);
+        // Load default fragment
+        loadFragment(new Home(), false);
 
-        // Open drawer when main ImageButton is clicked
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        // Open drawer on menu button click
+        imageButton.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int itemId = menuItem.getItemId();
-                if (itemId == R.id.home) {
-                    loadFragment(new Home(), 0);
-                } else if (itemId == R.id.profile) {
-                    startActivity(new Intent(DashScreen.this, Userprofile.class));
-                } else if (itemId == R.id.society) {
-                    loadFragment(new Society(), 1);
-                } else if (itemId == R.id.about) {
-                    loadFragment(new AboutUs(), 1);
-                } else if (itemId == R.id.funds) {
-                    loadFragment(new Funds(), 1);
-                } else if (itemId == R.id.exit) {
-                    startActivity(new Intent(DashScreen.this, MainActivity.class));
-                }
-                drawerLayout.closeDrawer(GravityCompat.START); // Close drawer after selection
-                return true;
+        // Navigation menu item click handling
+        navigationView.setNavigationItemSelectedListener(menuItem -> {
+            int itemId = menuItem.getItemId();
+
+            if (itemId == R.id.home) {
+                loadFragment(new Home(), true);
+            } else if (itemId == R.id.profile) { // Make sure R.id.profile matches your XML menu item
+                Intent intent = new Intent(DashScreen.this, Userprofile.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            } else if (itemId == R.id.society) {
+                loadFragment(new Society(), true);
+            } else if (itemId == R.id.about) {
+                loadFragment(new AboutUs(), true);
+            } else if (itemId == R.id.funds) {
+                loadFragment(new Funds(), true);
+            } else if (itemId == R.id.exit) {
+                startActivity(new Intent(DashScreen.this, MainActivity.class));
+                finish();
+            }else if (itemId == R.id.chatt) {
+                startActivity(new Intent(DashScreen.this, ChatUser.class));
+                finish();
             }
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,13 +93,13 @@ public class DashScreen extends AppCompatActivity {
         return true;
     }
 
-    private void loadFragment(Fragment fragment, int flag) {
+    private void loadFragment(Fragment fragment, boolean replace) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        if (flag == 0) {
-            ft.add(R.id.container, new Home());
-        } else {
+        if (replace) {
             ft.replace(R.id.container, fragment);
+        } else {
+            ft.add(R.id.container, fragment);
         }
         ft.commit();
     }

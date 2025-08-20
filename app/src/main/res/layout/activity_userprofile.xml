@@ -17,15 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/back_from_profile"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/leftarrow"
+            android:src="@drawable/leftarrow"
             android:elevation="50dp"
-            android:contentDescription="Back" />
+            android:contentDescription="Back">
+
+        </ImageView>
 
         <TextView
             android:id="@+id/textView4"
@@ -151,6 +153,12 @@
             android:layout_gravity="center"
             android:backgroundTint="@color/white"
             android:hint="John Dev"
+
+            android:textColor="#04042F"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:clickable="true"
             android:inputType="text"
             android:paddingStart="20dp"
             android:textColorHint="#EA133043"
@@ -158,6 +166,7 @@
 
         </TextView>
         <ImageView
+            android:id="@+id/eduser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -199,11 +208,17 @@
             android:inputType="phone"
             android:maxLength="10"
             android:paddingStart="20dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:clickable="true"
+            android:textColor="#04042F"
             android:textColorHint="#EA133043"
             android:textSize="18dp">
 
         </TextView>
         <ImageView
+            android:id="@+id/edphone"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -244,11 +259,17 @@
             android:hint="johndev18@gmail.com"
             android:inputType="textEmailAddress"
             android:paddingStart="20dp"
+            android:textColor="#04042F"
             android:textColorHint="#EA133043"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:clickable="true"
             android:textSize="18dp">
 
         </TextView>
         <ImageView
+            android:id="@+id/edemail"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -287,11 +308,17 @@
             android:hint="DD/MM/YYYY"
             android:inputType="date"
             android:paddingStart="20dp"
+            android:textColor="#04042F"
             android:textColorHint="#EA133043"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:clickable="true"
             android:textSize="18dp">
 
         </TextView>
         <ImageView
+            android:id="@+id/edob"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"

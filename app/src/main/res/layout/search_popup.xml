@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#F5F5F5">
+
+    <!-- Top Bar -->
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search By Filters"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333" />
+
+        <ImageView
+            android:id="@+id/closeBtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/cross"
+            android:contentDescription="Close" />
+    </RelativeLayout>
+
+    <!-- Property Type -->
+    <TextView
+        android:id="@+id/propertyTypeLabel"
+        android:layout_below="@id/topBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Property Type"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginTop="12dp"
+        android:textColor="#333333" />
+
+    <LinearLayout
+        android:id="@+id/propertyTypeGroup"
+        android:layout_below="@id/propertyTypeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnDeveloped"
+            style="@style/FilterButton.Selected"
+            android:background="@drawable/bg"
+            android:text="Developed" />
+
+        <Button
+            android:id="@+id/btnUnderConstruction"
+            style="@style/FilterButton"
+            android:background="@drawable/b"
+            android:text="Under Construction" />
+    </LinearLayout>
+
+    <!-- Looking For -->
+    <TextView
+        android:id="@+id/lookingForLabel"
+        android:layout_below="@id/propertyTypeGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Looking For"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:textColor="#333333" />
+
+    <LinearLayout
+        android:id="@+id/lookingForGroup"
+        android:layout_below="@id/lookingForLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnHouse"
+            style="@style/FilterButton.Selected"
+            android:background="@drawable/bg"
+            android:text="Houses" />
+
+        <Button
+            android:id="@+id/btnOffice"
+            style="@style/FilterButton"
+            android:background="@drawable/b"
+            android:text="Office" />
+
+        <Button
+            android:id="@+id/btnShowrooms"
+            style="@style/FilterButton"
+            android:background="@drawable/b"
+            android:text="Showrooms" />
+    </LinearLayout>
+
+    <!-- BHK Type -->
+    <TextView
+        android:id="@+id/bhkTypeLabel"
+        android:layout_below="@id/lookingForGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BHK Type"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:textColor="#333333" />
+
+    <GridLayout
+        android:id="@+id/bhkTypeGroup"
+        android:layout_below="@id/bhkTypeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btn1bhk"
+            style="@style/FilterButton"
+            android:background="@drawable/b"
+            android:text="1 BHK" />
+
+        <Button
+            android:id="@+id/btn2bhk"
+            style="@style/FilterButton.Selected"
+            android:background="@drawable/bg"
+            android:text="2 BHK" />
+
+        <Button
+            android:id="@+id/btn3bhk"
+            style="@style/FilterButton"
+            android:background="@drawable/b"
+            android:text="3 BHK" />
+
+        <Button
+            android:id="@+id/btn4bhk"
+            style="@style/FilterButton"
+            android:background="@drawable/b"
+            android:text="4 BHK" />
+    </GridLayout>
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_below="@id/bhkTypeGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#2D4464"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+</RelativeLayout>

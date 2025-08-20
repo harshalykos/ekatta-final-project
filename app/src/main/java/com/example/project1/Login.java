@@ -14,8 +14,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Login extends AppCompatActivity {
-    private static final String PREF_NAME = "MyPrefs";
-    private static final String KEY_NUMBER = "Mobile_number";
+    private static final String PREF_NAME = "MyPrefs";    // same as Userprofile
+    private static final String KEY_NUMBER = "Number";     // must match Userprofile key
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -38,10 +38,17 @@ public class Login extends AppCompatActivity {
                 if (mobNo.isEmpty()) {
                     Toast.makeText(Login.this, "Please enter your mobile number", Toast.LENGTH_SHORT).show();
                     return;
-                } else if (mobNo.equals(savedNumber)) {
+                }
+
+                if (savedNumber == null) {
+                    Toast.makeText(Login.this, "No registered mobile number found! Please register first.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (mobNo.equals(savedNumber)) {
                     Toast.makeText(Login.this, "Mobile Number Verified", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, OTPVerify.class);
-                    intent.putExtra("mobileNumber",mobNo);
+                    intent.putExtra("mobileNumber", mobNo);
                     startActivity(intent);
                     finish();
                 } else {

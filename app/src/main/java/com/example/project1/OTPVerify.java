@@ -69,6 +69,7 @@ public class OTPVerify extends AppCompatActivity {
                 if (otp.length() == 4 && pass.equals(otp)) {
                     Intent intent = new Intent(OTPVerify.this, SuccessOTP.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     new cn.pedant.SweetAlert.SweetAlertDialog(OTPVerify.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Invalid OTP")
@@ -94,9 +95,4 @@ public class OTPVerify extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
 }

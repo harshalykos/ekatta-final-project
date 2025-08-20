@@ -68,6 +68,7 @@
         android:backgroundTint="@color/white"
         android:hint="John Dev"
         android:inputType="text"
+        android:textColor="#04042F"
         android:paddingStart="20dp"
         android:textColorHint="#EA133043"
         android:textSize="18dp">
@@ -106,6 +107,7 @@
             android:backgroundTint="@color/white"
             android:maxLength="10"
             android:hint="+91 0000 0000 00"
+            android:textColor="#04042F"
             android:inputType="phone"
             android:paddingStart="20dp"
             android:textColorHint="#EA133043"
@@ -144,6 +146,7 @@
             android:layout_gravity="center"
             android:backgroundTint="@color/white"
             android:hint="johndev18@gmail.com"
+            android:textColor="#04042F"
             android:inputType="textEmailAddress"
             android:paddingStart="20dp"
             android:textColorHint="#EA133043"
@@ -181,6 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/white"
+            android:textColor="#04042F"
             android:hint="DD/MM/YYYY"
             android:inputType="date"
             android:paddingStart="20dp"
@@ -233,6 +237,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Female"
+
             android:textColor="#CD04042F"
             android:textStyle="bold">
 

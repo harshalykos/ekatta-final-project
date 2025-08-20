@@ -1,14 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5FAFF"
     tools:context=".Funds">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <FrameLayout
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginLeft="30dp"
+        android:background="#FFFFFF"
+
+        >
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/gg"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="21dp">
+
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total  fund"
+            android:textColor="#2D4464"
+            android:textSize="18dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="75dp"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24,000/-"
+            android:textColor="#2D4464"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="199dp"
+            >
+        </TextView>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Funds"
+        android:textColor="#2D4464"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="170dp"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        >
+
+    </TextView>
+    <EditText
+        android:id="@+id/add_fund"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="30dp"
+        android:inputType="number"
+        android:hint="Add Funds"
+        android:paddingStart="20dp"
+        android:background="@drawable/loginbg"
+        >
+    </EditText>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fundadded"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/registerbg"
+        android:text="Add Funds"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:layout_marginLeft="30dp"
+        android:textStyle="bold"
+        >
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Funds Expense"
+        android:textColor="#2D4464"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="380dp"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        >
+    </TextView>
+    <EditText
+        android:id="@+id/funduser"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="440dp"
+        android:layout_marginLeft="30dp"
+        android:hint="Funds used for"
+        android:paddingStart="20dp"
+        android:background="@drawable/loginbg"
+        >
+    </EditText>
+    <EditText
+        android:id="@+id/costfund"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="30dp"
+        android:hint="Cost"
+        android:paddingStart="20dp"
+        android:background="@drawable/loginbg"
+        >
+    </EditText>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="560dp"
+        android:background="@drawable/mobilenobg"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:layout_marginLeft="30dp"
+        tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/user"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:hint="Date of Expense"
+            android:inputType="text"
+            android:textColor="#04042F"
+            android:paddingStart="20dp"
+            android:textColorHint="#EA133043"
+            android:textSize="18dp">
+        </EditText>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/cal2">
+        </ImageView>
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fundadded_exp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="650dp"
+        android:background="@drawable/registerbg"
+        android:text="Add fund Expense"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:layout_marginLeft="30dp"
+        android:textStyle="bold"
+        >
+
+    </androidx.appcompat.widget.AppCompatButton>
+</RelativeLayout>

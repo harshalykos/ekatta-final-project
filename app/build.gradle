@@ -12,7 +12,7 @@ android {
         targetSdk 35
         versionCode 1
         versionName "1.0"
-
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -34,9 +34,20 @@ dependencies {
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
+    implementation libs.play.services.ads.api
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
-    implementation 'com.github.f0ris.sweetalert:library:1.5.6'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+    implementation 'com.github.f0ris.sweetalert:library:1.6.2'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
+
+
 
 
     androidTestImplementation libs.espresso.core

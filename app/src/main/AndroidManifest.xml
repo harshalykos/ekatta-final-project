@@ -11,26 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project1">
+
         <activity
-            android:name=".Userprofile"
+            android:name=".Chat_1"
             android:exported="false" />
         <activity
-            android:name=".Notification"
+            android:name=".DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".DashScreen"
-            android:exported="false">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
-            android:name=".SuccessOTP"
-            android:exported="false" /> <!-- Splash Screen (Launcher) -->
+            android:name=".AfterFund"
+            android:exported="false" /> <!-- Splash Screen (Launcher Activity) -->
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -43,16 +33,32 @@
         </activity> <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
-            android:exported="true" /> <!-- Login Screen -->
+            android:exported="true" /> <!-- Other Activities -->
         <activity
             android:name=".Login"
-            android:exported="false" /> <!-- Registration Screen -->
+            android:exported="false" />
         <activity
             android:name=".Registration"
-            android:exported="false" /> <!-- OTP Verification Screen -->
+            android:exported="false" />
         <activity
             android:name=".OTPVerify"
             android:exported="false" />
+        <activity
+            android:name=".SuccessOTP"
+            android:exported="false" /> <!-- Dash Screen (NoActionBar, launched after Splash) -->
+        <activity
+            android:name=".DashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Notification"
+            android:exported="false" />
+        <activity
+            android:name=".Userprofile"
+            android:exported="false" /> <!-- AdMob App ID -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1234567890123456~1234567890" />
     </application>
 
 </manifest>
