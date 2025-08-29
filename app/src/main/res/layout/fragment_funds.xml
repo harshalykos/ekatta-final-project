@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5FAFF"
+    android:layout_gravity="center"
     tools:context=".Funds">
 
 
@@ -157,7 +158,7 @@
         android:id="@+id/fundadded_exp"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="680dp"
         android:background="@drawable/registerbg"
         android:text="Add fund Expense"
         android:textColor="@color/white"
@@ -168,4 +169,15 @@
         >
 
     </androidx.appcompat.widget.AppCompatButton>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_button_fund"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/yes"
+        android:backgroundTint="#2D4464"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="690dp"
+        >
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </RelativeLayout>

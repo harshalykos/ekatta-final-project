@@ -259,7 +259,7 @@
                 </TextView>
             </LinearLayout>
         </LinearLayout>
-        
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tb"
             android:layout_width="match_parent"

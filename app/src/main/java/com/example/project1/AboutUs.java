@@ -1,64 +1,97 @@
 package com.example.project1;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AboutUs#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
+
 public class AboutUs extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    AppCompatButton visitSiteBtn, callUsBtn, emailUsBtn, locBtn;
+    TextView descriptionTextView, seeMoreTextView;
+    boolean isExpanded = false;
 
     public AboutUs() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AboutUs.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AboutUs newInstance(String param1, String param2) {
-        AboutUs fragment = new AboutUs();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        // Inflate layout
+        View view = inflater.inflate(R.layout.fragment_about_us, container, false);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about_us, container, false);
+        // Initialize Buttons
+        visitSiteBtn = view.findViewById(R.id.visitsite);
+        callUsBtn = view.findViewById(R.id.callus);
+        emailUsBtn = view.findViewById(R.id.emailus);
+        locBtn = view.findViewById(R.id.loc);
+
+        // Initialize Description TextViews
+        descriptionTextView = view.findViewById(R.id.description);
+        seeMoreTextView = view.findViewById(R.id.see_more);
+
+        // Website Button
+        visitSiteBtn.setOnClickListener(v -> {
+            String url = "https://ekatta.in/";
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        });
+
+        // Call Button
+        callUsBtn.setOnClickListener(v -> {
+            String phoneNumber = "9409294950";
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + phoneNumber));
+            startActivity(intent);
+        });
+
+        // Email Button
+        emailUsBtn.setOnClickListener(v -> {
+            String email = "Hrd.ekatta@gmail.com.  ";
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:" + email));
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Inquiry from App");
+            intent.putExtra(Intent.EXTRA_TEXT, "Hello, I would like to know more about...");
+            startActivity(intent);
+        });
+
+        // Location Button
+        locBtn.setOnClickListener(v -> {
+            String geoUri = "https://www.google.com/maps/place/Ekatta+Innovators+LLP/data=!4m2!3m1!1s0x0:0x54c0933f689ece29?sa=X&ved=1t:2428&ictx=111";
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+            intent.setPackage("com.google.android.apps.maps");
+            startActivity(intent);
+        });
+
+        // See More / See Less logic
+        seeMoreTextView.setOnClickListener(v -> {
+            if (isExpanded) {
+                // Collapse
+                descriptionTextView.setMaxLines(3);
+                descriptionTextView.setEllipsize(TextUtils.TruncateAt.END);
+                seeMoreTextView.setText("See More");
+                isExpanded = false;
+            } else {
+                // Expand
+                descriptionTextView.setMaxLines(Integer.MAX_VALUE);
+                descriptionTextView.setEllipsize(null);
+                seeMoreTextView.setText("See Less");
+                isExpanded = true;
+            }
+        });
+
+
+        return view;
     }
 }

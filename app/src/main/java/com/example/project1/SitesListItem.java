@@ -3,13 +3,19 @@ package com.example.project1;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class SitesListItem implements Parcelable {
-    private int imageRes, locationIcon, buildingIcon, measurementIcon;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SitesListItem implements Parcelable, Serializable {
+    private List<Integer> imageList;  // Multiple images for slider
+    private int locationIcon, buildingIcon, measurementIcon;
     private String title, address, type, size;
 
-    public SitesListItem(int imageRes, int locationIcon, int buildingIcon, int measurementIcon,
-                         String title, String address, String type, String size) {
-        this.imageRes = imageRes;
+    public SitesListItem(List<Integer> imageList, int locationIcon, int buildingIcon,
+                         int measurementIcon, String title, String address,
+                         String type, String size) {
+        this.imageList = imageList;
         this.locationIcon = locationIcon;
         this.buildingIcon = buildingIcon;
         this.measurementIcon = measurementIcon;
@@ -19,8 +25,25 @@ public class SitesListItem implements Parcelable {
         this.size = size;
     }
 
+    // ✅ Getters
+    public List<Integer> getImageList() { return imageList; }
+    public int getLocationIcon() { return locationIcon; }
+    public int getBuildingIcon() { return buildingIcon; }
+    public int getMeasurementIcon() { return measurementIcon; }
+    public String getTitle() { return title; }
+    public String getAddress() { return address; }
+    public String getType() { return type; }
+    public String getSize() { return size; }
+
+    // ✅ Additional getters for clarity
+    public String getProjectName() { return title; }
+    public String getFlatType() { return type; }
+    public String getMeasurement() { return size; }
+
+    // ✅ Parcelable Implementation
     protected SitesListItem(Parcel in) {
-        imageRes = in.readInt();
+        imageList = new ArrayList<>();
+        in.readList(imageList, Integer.class.getClassLoader());
         locationIcon = in.readInt();
         buildingIcon = in.readInt();
         measurementIcon = in.readInt();
@@ -28,6 +51,23 @@ public class SitesListItem implements Parcelable {
         address = in.readString();
         type = in.readString();
         size = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeList(imageList);
+        dest.writeInt(locationIcon);
+        dest.writeInt(buildingIcon);
+        dest.writeInt(measurementIcon);
+        dest.writeString(title);
+        dest.writeString(address);
+        dest.writeString(type);
+        dest.writeString(size);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<SitesListItem> CREATOR = new Creator<SitesListItem>() {
@@ -42,24 +82,7 @@ public class SitesListItem implements Parcelable {
         }
     };
 
-    public int getImageRes() { return imageRes; }
-    public String getTitle() { return title; }
-    public String getAddress() { return address; }
-    public String getType() { return type; }
-    public String getSize() { return size; }
-
-    @Override
-    public int describeContents() { return 0; }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(imageRes);
-        parcel.writeInt(locationIcon);
-        parcel.writeInt(buildingIcon);
-        parcel.writeInt(measurementIcon);
-        parcel.writeString(title);
-        parcel.writeString(address);
-        parcel.writeString(type);
-        parcel.writeString(size);
+    public int getImageRes() {
+        return 0;
     }
 }

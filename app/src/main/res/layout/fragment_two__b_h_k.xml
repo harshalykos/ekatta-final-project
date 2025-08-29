@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#F5FAFF"
+    tools:context=".Two_BHK"
+    android:padding="8dp">
+
+        <!-- Top Image with Button -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:background="#EAEAEA">
+
+            <ImageView
+                android:id="@+id/floorImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/floor_plan" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnView3D"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View 3D"
+                android:background="@color/white"
+                android:textColor="#2D4464"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="8dp"/>
+        </RelativeLayout>
+
+        <!-- Horizontal Scroll for Photos -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:id="@+id/horizontal_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/i1"
+                    android:layout_width="200dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/z_bg"
+                    android:src="@drawable/q"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="4dp"/>
+
+                <ImageView
+                    android:id="@+id/i2"
+                    android:layout_width="200dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/r"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="4dp"/>
+
+                <ImageView
+                    android:id="@+id/i3"
+                    android:layout_width="200dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/s"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="4dp"/>
+
+                <ImageView
+                    android:id="@+id/i4"
+                    android:layout_width="200dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/t"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="4dp"/>
+                <ImageView
+                    android:id="@+id/i5"
+                    android:layout_width="200dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/u"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="4dp"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/D_tablyt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:elevation="50dp"
+            >
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details"
+                >
+            </com.google.android.material.tabs.TabItem>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photos"
+                android:scrollbarSize="20dp">
+            </com.google.android.material.tabs.TabItem>
+        </com.google.android.material.tabs.TabLayout>
+
+        <FrameLayout
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:layout_height="280dp">
+
+        </FrameLayout>
+    </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_gravity="center"
+           android:gravity="center"
+           android:background="@color/white">
+           <androidx.cardview.widget.CardView
+               android:layout_width="161dp"
+               android:layout_height="34dp"
+               android:layout_marginTop="20dp"
+               app:cardMaxElevation="20dp"
+               app:cardCornerRadius="3dp"
+               android:layout_marginBottom="20dp"
+               android:layout_gravity="center">
+               <Button
+                   android:id="@+id/ee"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:text="Enquiry"
+                   android:background="@drawable/registerbg"
+                   android:textColor="@android:color/white"/>
+           </androidx.cardview.widget.CardView>
+       </LinearLayout>
+    </LinearLayout>

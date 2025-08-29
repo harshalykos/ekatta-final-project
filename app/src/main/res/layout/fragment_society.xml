@@ -74,6 +74,7 @@
             android:textSize="25dp"> </TextView>
 
         <LinearLayout
+            android:id="@+id/viewhistory"
             android:layout_width="139dp"
             android:layout_height="29dp"
             android:layout_marginLeft="92dp"
@@ -90,7 +91,7 @@
             </ImageView>
 
             <TextView
-                android:id="@+id/save_profile_changes"
+                android:id="@+id/viewhistory2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -101,6 +102,18 @@
                 android:textSize="15dp"> </TextView>
 
         </LinearLayout>
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/viewhistory"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="70dp"-->
+<!--            android:layout_marginLeft="110dp"-->
+<!--            android:text="viewhistory"-->
+<!--            android:background="#FFBEBE"-->
+<!--            >-->
+
+<!--        </androidx.appcompat.widget.AppCompatButton>-->
     </androidx.cardview.widget.CardView>
 
     <TextView

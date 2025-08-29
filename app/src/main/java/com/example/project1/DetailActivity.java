@@ -1,9 +1,7 @@
 package com.example.project1;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,41 +12,46 @@ import com.google.android.material.tabs.TabLayout;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private ImageView imageView;
-    private TextView titleView, addressView;
+    private ImageView previewImage;
+    private TextView projectName, address;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail); // create this layout
+        setContentView(R.layout.activity_detail); // ✅ correct layout
 
-        imageView = findViewById(R.id.detail_image);
-        titleView = findViewById(R.id.detail_title);
-        addressView = findViewById(R.id.detail_address);
+        // Views
+        previewImage = findViewById(R.id.detail_image);
+        projectName = findViewById(R.id.detail_title);
+        address = findViewById(R.id.detail_address);
 
+        // Get data from intent
+        SitesListItem siteItem = getIntent().getParcelableExtra("siteItem");
 
-        SitesListItem item = getIntent().getParcelableExtra("siteData");
-
-        if (item != null) {
-            imageView.setImageResource(item.getImageRes());
-            titleView.setText(item.getTitle());
-            addressView.setText(item.getAddress());
-
+        if (siteItem != null) {
+            // Load first image from list safely
+            if (siteItem.getImageList() != null && !siteItem.getImageList().isEmpty()) {
+                previewImage.setImageResource(siteItem.getImageList().get(0));
+            }
+            projectName.setText(siteItem.getTitle());
+            address.setText(siteItem.getAddress());
         }
 
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+        // Setup Tabs
         TabLayout tb = findViewById(R.id.tb);
-        TextView text = new TextView(DetailActivity.this);
 
+        // Default Fragment
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.House_fragment, new Specification())
                 .commit();
 
-        tb.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        // Handle Tab Selection
+        tb.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                switch(position){
+                switch (position) {
                     case 0:
                         loadLayout(new Specification());
                         break;
@@ -65,18 +68,14 @@ public class DetailActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabUnselected(TabLayout.Tab tab) {}
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) {}
         });
-
     }
-    private void loadLayout(Fragment fragment){
+
+    private void loadLayout(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.House_fragment, fragment)
                 .commit();

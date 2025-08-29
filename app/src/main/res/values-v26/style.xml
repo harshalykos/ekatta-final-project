@@ -10,4 +10,5 @@
         <item name="backgroundTint">#D6E6FA</item>  <!-- FIXED -->
         <item name="android:textColor">#1A2B4C</item>
     </style>
+
 </resources>

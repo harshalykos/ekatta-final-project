@@ -34,7 +34,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:paddingStart="15dp"
-                android:src="@drawable/profile">
+                android:src="@drawable/lock">
 
             </ImageView>
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:paddingStart="15dp"
-                android:src="@drawable/profile">
+                android:src="@drawable/pipee">
 
             </ImageView>
             <TextView
@@ -87,7 +87,7 @@ pipes"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:paddingStart="15dp"
-                android:src="@drawable/profile">
+                android:src="@drawable/pin">
 
             </ImageView>
             <TextView
@@ -121,7 +121,7 @@ wires"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:paddingStart="15dp"
-                android:src="@drawable/profile">
+                android:src="@drawable/bin">
 
             </ImageView>
             <TextView
@@ -148,7 +148,7 @@ taps"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:paddingStart="15dp"
-                android:src="@drawable/profile">
+                android:src="@drawable/wave">
 
             </ImageView>
             <TextView
@@ -174,8 +174,8 @@ plywood"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:paddingStart="15dp"
-                android:src="@drawable/profile">
+                android:paddingStart="5dp"
+                android:src="@drawable/bocc">
 
             </ImageView>
             <TextView

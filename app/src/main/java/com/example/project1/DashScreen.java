@@ -20,6 +20,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.navigation.NavigationView;
 
 public class DashScreen extends AppCompatActivity {
+    public DashScreen() {
+        // Required empty public constructor
+    }
+
 
     private DrawerLayout drawerLayout;
     private ImageButton imageButton;
@@ -42,21 +46,44 @@ public class DashScreen extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        // Load default fragment
-        loadFragment(new Home(), false);
+        // ✅ Handle incoming fragment from intent
+        String fragmentToLoad = getIntent().getStringExtra("fragment_to_load");
+        if (fragmentToLoad != null) {
+            switch (fragmentToLoad) {
+                case "TWO_BHK":
+                    loadFragment(new Two_BHK(), true);
+                    break;
+                case "THREE_BHK":
+                    loadFragment(new Three_bhk(), true);
+                    break;
+                case "ChatUser1":
+                    loadFragment(new ChatUser1(), true);
+                    break;
+                case "Fund2":   // <-- from Funds fragment floating button
+                    loadFragment(new Fund2(), true);
+                    break;
+                case "View_history":   // <-- from Funds fragment floating button
+                    loadFragment(new View_history(), true);
+                    break;
+                default:
+                    loadFragment(new Home(), true); // fallback
+                    break;
+            }
+        } else {
+            loadFragment(new Home(), true); // default fragment
+        }
 
-        // Open drawer on menu button click
+        // ✅ Open drawer on imageButton click
         imageButton.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
-        // Navigation menu item click handling
+        // ✅ Navigation drawer item click handling
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             int itemId = menuItem.getItemId();
 
             if (itemId == R.id.home) {
                 loadFragment(new Home(), true);
-            } else if (itemId == R.id.profile) { // Make sure R.id.profile matches your XML menu item
-                Intent intent = new Intent(DashScreen.this, Userprofile.class);
-                startActivity(intent);
+            } else if (itemId == R.id.profile) {
+                startActivity(new Intent(DashScreen.this, Userprofile.class));
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             } else if (itemId == R.id.society) {
                 loadFragment(new Society(), true);
@@ -67,8 +94,8 @@ public class DashScreen extends AppCompatActivity {
             } else if (itemId == R.id.exit) {
                 startActivity(new Intent(DashScreen.this, MainActivity.class));
                 finish();
-            }else if (itemId == R.id.chatt) {
-                startActivity(new Intent(DashScreen.this, ChatUser.class));
+            } else if (itemId == R.id.chatt) {
+                startActivity(new Intent(DashScreen.this, Enquiry_bottom_sheet.class));
                 finish();
             }
 
@@ -93,6 +120,7 @@ public class DashScreen extends AppCompatActivity {
         return true;
     }
 
+    // ✅ Unified fragment loader
     private void loadFragment(Fragment fragment, boolean replace) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();

@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.Calendar;
 
 public class Funds extends Fragment {
@@ -26,6 +28,7 @@ public class Funds extends Fragment {
     // Expense-related views
     private EditText fundUserEditText, costFundEditText, dateEditText;
     private Button fundExpenseButton;
+    private FloatingActionButton floatingActionButton;
 
     private int totalFund = 24000;
 
@@ -51,8 +54,19 @@ public class Funds extends Fragment {
         // Initialize expense fields
         fundUserEditText = view.findViewById(R.id.funduser);
         costFundEditText = view.findViewById(R.id.costfund);
-        dateEditText = view.findViewById(R.id.user);
+        dateEditText = view.findViewById(R.id.user); // <-- make sure this ID matches XML
         fundExpenseButton = view.findViewById(R.id.fundadded_exp);
+
+        // Floating button init
+        floatingActionButton = view.findViewById(R.id.floating_button_fund);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DashScreen.class);
+                intent.putExtra("fragment_to_load", "Fund2");
+                startActivity(intent);
+            }
+        });
 
         updateTotalFundText();
 
@@ -108,6 +122,7 @@ public class Funds extends Fragment {
                 startActivity(intent);
             }
         });
+
     }
 
     private void showDatePickerDialog() {

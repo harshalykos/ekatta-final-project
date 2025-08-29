@@ -1,203 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F5FAFF"
-    tools:context=".Chat_A">
+    android:background="#F4F9FF"
+    android:padding="16dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="283dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="5dp"
-        app:cardMaxElevation="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:padding="2dp"
-                android:src="@drawable/hello">
-
-            </ImageView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:gravity="center"
-                android:text="Hi, how can I help you today?
-"
-                android:textColor="#2D4464">
-
-            </TextView>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+    <!-- Title -->
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Select The Category According To Your Service"
+        android:textSize="15dp"
+        android:textColor="#666666"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp" />
+
+    <!-- Categories Section -->
+    <LinearLayout
+        android:id="@+id/categoryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleText"
         android:layout_marginTop="24dp"
-        android:text="select the options according  to your service"
-        android:textColor="#9B9B9B"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+        android:orientation="vertical"
+        android:gravity="center">
 
-    </TextView>
-
-    <FrameLayout
-        android:id="@+id/frameLayout1"
-        android:layout_width="112dp"
-        android:layout_height="87dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="170dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.227"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/col_11"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/circle_shape"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="0dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
-                android:padding="5dp"
-                android:text="view previous\n services status"
-                android:textAlignment="center"
-                android:textColor="#2D4464">
-
-            </TextView>
-        </androidx.cardview.widget.CardView>
-
-    </FrameLayout>
-
-    <ImageButton
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginTop="144dp"
-        android:background="@drawable/circle_white"
-        android:backgroundTint="#D9E9FF"
-        android:contentDescription="Edit profile"
-        android:elevation="4dp"
-        android:padding="6dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/eyee"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/frameLayout2"
-        android:layout_width="112dp"
-        android:layout_height="87dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="170dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toEndOf="@+id/frameLayout1"
-        app:layout_constraintTop_toTopOf="parent">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/col_22"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/circle_shape"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="0dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ask for\n service"
-                android:textAlignment="center"
-                android:padding="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center"
-                android:textColor="#2D4464"
-                >
-
-            </TextView>
-        </androidx.cardview.widget.CardView>
-    </FrameLayout>
-
-    <ImageButton
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginTop="144dp"
-        android:background="@drawable/circle_white"
-        android:backgroundTint="#D9E9FF"
-        android:contentDescription="Edit profile"
-        android:elevation="4dp"
-        android:padding="6dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/book"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.719"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="283dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="280dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="5dp"
-        app:cardMaxElevation="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        <!-- Row 1 -->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:padding="2dp"
-                android:src="@drawable/robot">
+            <Button
+                android:id="@+id/btnPlumbing"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Plumbing"
+                android:textSize="15sp"
+                android:background="@drawable/b"
+                android:backgroundTint="#E6F0FF"
+                android:textColor="#2D4464" />
 
-            </ImageView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:gravity="center"
-                android:text="You want to view a service,so\n
-here are some of your’s previous services
-"
-                android:textSize="12dp"
-                android:textColor="#2D4464">
-
-            </TextView>
+            <Button
+                android:id="@+id/btnElectricity"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Electricity"
+                android:background="@drawable/b"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
+
+        <!-- Row 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/btnWaterproofing"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Waterproofing"
+                android:background="@drawable/b"
+                android:textSize="15sp"
+                android:backgroundTint="#E6F0FF"
+                android:textColor="#2D4464" />
+
+            <Button
+                android:id="@+id/btnPaint"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/b"
+                android:text="Paint"
+                android:textSize="15sp"
+                android:backgroundTint="#E6F0FF"
+                android:textColor="#2D4464" />
+        </LinearLayout>
+
+        <!-- Row 3 - Other (full width) -->
+        <Button
+            android:id="@+id/btnOther"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:textSize="16sp"
+            android:background="@drawable/b"
+            android:backgroundTint="#E6F0FF"
+            android:textColor="#2D4464" />
+
+    </LinearLayout>
+
+    <!-- Upload Photo Section -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/uploadSection"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="60dp"
+        app:cardCornerRadius="10dp"
+        android:layout_below="@id/categoryLayout"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="#CFE8FF"   >
+
+        <ImageView
+            android:id="@+id/uploadIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/camera"
+            android:layout_marginTop="30dp"
+            app:tint="#2D4464" />
+
+        <TextView
+            android:id="@+id/uploadText"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Upload Photo"
+            android:gravity="center"
+            android:background="#81000000"
+            android:textColor="#2D4464"
+            android:layout_marginTop="90dp"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
