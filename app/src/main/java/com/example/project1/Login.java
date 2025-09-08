@@ -1,6 +1,7 @@
 package com.example.project1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Login extends AppCompatActivity {
 
     DBHelper dbHelper;
+    private static final String PREF_NAME = "MyPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,16 @@ public class Login extends AppCompatActivity {
             boolean exists = dbHelper.checkUserExists(mobNo);
 
             if (exists) {
-                Toast.makeText(Login.this, "Mobile Number Verified", Toast.LENGTH_SHORT).show();
+                // ✅ Save logged in mobile
+                SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("loggedInMobile", mobNo);
+                editor.apply();
+
+                Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                // ✅ Go to profile
                 Intent intent = new Intent(Login.this, OTPVerify.class);
-                intent.putExtra("mobileNumber", mobNo);
                 startActivity(intent);
                 finish();
             } else {

@@ -36,7 +36,6 @@ public class Registration extends AppCompatActivity {
 
         dbHelper = new DBHelper(this);
 
-        // Date picker
         dob.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
             DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -73,9 +72,8 @@ public class Registration extends AppCompatActivity {
             boolean inserted = dbHelper.insertUser(name, number, emailId, date, gender);
 
             if (inserted) {
-                Toast.makeText(Registration.this, "Employee Registered", Toast.LENGTH_SHORT).show();
-                Intent intentOtp = new Intent(Registration.this, OTPVerify.class);
-                intentOtp.putExtra("mobileno", number);
+                Toast.makeText(Registration.this, "User Registered Successfully", Toast.LENGTH_SHORT).show();
+                Intent intentOtp = new Intent(Registration.this, Login.class);
                 startActivity(intentOtp);
                 finish();
             } else {

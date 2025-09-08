@@ -23,7 +23,6 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Create Table
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + "("
@@ -36,7 +35,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
     }
 
-    // Upgrade DB
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
@@ -47,9 +45,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public boolean insertUser(String name, String number, String email, String dob, String gender) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // check if user already exists
         if (checkUserExists(number)) {
-            return false;
+            return false; // already exists
         }
 
         ContentValues values = new ContentValues();
@@ -60,10 +57,10 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COL_GENDER, gender);
 
         long result = db.insert(TABLE_NAME, null, values);
-        return result != -1; // true if inserted
+        return result != -1;
     }
 
-    // Check if user exists by number
+    // Check if user exists
     public boolean checkUserExists(String number) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME, new String[]{COL_ID},
@@ -73,5 +70,11 @@ public class DBHelper extends SQLiteOpenHelper {
         boolean exists = cursor.getCount() > 0;
         cursor.close();
         return exists;
+    }
+
+    // ✅ Get user by mobile number
+    public Cursor getUserByNumber(String number) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_NUMBER + "=?", new String[]{number});
     }
 }

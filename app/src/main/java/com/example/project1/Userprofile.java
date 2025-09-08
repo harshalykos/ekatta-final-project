@@ -1,10 +1,10 @@
 package com.example.project1;
 
-import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,29 +15,21 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Calendar;
-
 public class Userprofile extends AppCompatActivity {
 
     private static final String PREF_NAME = "MyPrefs";
-    private static final String KEY_USERNAME = "Username";
-    private static final String KEY_NUMBER = "Number";
-    private static final String KEY_EMAIL = "EMAIL";
-    private static final String KEY_DOB = "date";
 
     TextView tvNameHeader, tvName, tvPhone, tvEmail, tvDob;
-    ImageView edituser, editphone, editemail, editdob, backButton;
+    ImageView edituser, editphone, editemail, editdob, backButton ,editpro;
     Button save;
 
     String un, upo, ue, ud;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userprofile);
 
-        // This is the fix: using ImageView instead of ImageButton
         backButton = findViewById(R.id.back_from_profile);
         backButton.setOnClickListener(v -> {
             startActivity(new Intent(Userprofile.this, DashScreen.class));
@@ -57,25 +49,18 @@ public class Userprofile extends AppCompatActivity {
         save = findViewById(R.id.save_profile_changes);
 
         SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        String mobile = sharedPreferences.getString("loggedInMobile", null);
 
-        un = getIntent().getStringExtra("username");
-        if (isNullOrEmpty(un)) {
-            un = sharedPreferences.getString(KEY_USERNAME, "User");
-        }
-
-        upo = getIntent().getStringExtra("mobile");
-        if (isNullOrEmpty(upo)) {
-            upo = sharedPreferences.getString(KEY_NUMBER, "0000000000");
-        }
-
-        ue = getIntent().getStringExtra("email");
-        if (isNullOrEmpty(ue)) {
-            ue = sharedPreferences.getString(KEY_EMAIL, "email@example.com");
-        }
-
-        ud = getIntent().getStringExtra("dob");
-        if (isNullOrEmpty(ud)) {
-            ud = sharedPreferences.getString(KEY_DOB, "01/01/2000");
+        if (mobile != null) {
+            DBHelper dbHelper = new DBHelper(this);
+            Cursor cursor = dbHelper.getUserByNumber(mobile);
+            if (cursor.moveToFirst()) {
+                un = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COL_NAME));
+                upo = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COL_NUMBER));
+                ue = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COL_EMAIL));
+                ud = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COL_DOB));
+            }
+            cursor.close();
         }
 
         tvNameHeader.setText(un);
@@ -100,22 +85,23 @@ public class Userprofile extends AppCompatActivity {
             tvEmail.setText(ue);
         }));
 
-        editdob.setOnClickListener(v -> showDatePicker());
+        editdob.setOnClickListener(v -> showEditDialog("Edit DOB", ud, newValue -> {
+            ud = newValue;
+            tvDob.setText(ud);
+        }));
 
         save.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(KEY_USERNAME, un);
-            editor.putString(KEY_NUMBER, upo);
-            editor.putString(KEY_EMAIL, ue);
-            editor.putString(KEY_DOB, ud);
-            editor.apply();
+            // Update DB
+            DBHelper dbHelper = new DBHelper(this);
+            ContentValues values = new ContentValues();
+            values.put(DBHelper.COL_NAME, un);
+            values.put(DBHelper.COL_NUMBER, upo);
+            values.put(DBHelper.COL_EMAIL, ue);
+            values.put(DBHelper.COL_DOB, ud);
+            dbHelper.getWritableDatabase().update(DBHelper.TABLE_NAME, values, DBHelper.COL_NUMBER + "=?", new String[]{upo});
 
             Toast.makeText(Userprofile.this, "Profile updated successfully!", Toast.LENGTH_SHORT).show();
         });
-    }
-
-    private boolean isNullOrEmpty(String str) {
-        return str == null || str.trim().isEmpty();
     }
 
     private void showEditDialog(String title, String currentValue, OnValueSetListener listener) {
@@ -135,21 +121,6 @@ public class Userprofile extends AppCompatActivity {
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
         builder.show();
-    }
-
-    private void showDatePicker() {
-        final Calendar calendar = Calendar.getInstance();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this,
-                (view, year, month, dayOfMonth) -> {
-                    ud = String.format("%02d/%02d/%04d", dayOfMonth, month + 1, year);
-                    tvDob.setText(ud);
-                },
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-        );
-        datePickerDialog.show();
     }
 
     interface OnValueSetListener {
